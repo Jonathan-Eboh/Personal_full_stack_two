@@ -33,12 +33,41 @@ module.exports = function (app, passport, db) {
 
 
     //useing async await
-    app.get('/inventory', async (req, res) => {
+    app.get('/event', async (req, res) => {
         const groceryResult = await fetch("https://jsonplaceholder.typicode.com/todos/") //later on put grocery api here
-        const groceryJson = await groceryResult.json()
+        let groceryJson = await groceryResult.json()
+
+        const drinkResult = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a") //later on put grocery api here
+        let drinkJson = await drinkResult.json()
+
+        //slice returns new array , splice mutates it
+        console.log(groceryJson.length);
+
+        groceryJson = groceryJson.slice(0, 10)
+        drinkJson = drinkJson.drinks.slice(0, 3)
+        console.log(groceryJson.length);
         //const result = await db.collection('cart').find().toArray() //can use this logic structure later to loop through grocery items and try to find them in the cart, then do stuff based on that
-        res.render('inventory.ejs', { inventory: groceryJson })
+        res.render('event.ejs', { event: groceryJson, drink: drinkJson })
     })
+
+    //_______________________adding event logic start_______________________
+
+    //need a route to grab drinks
+    //need a route to grab meal
+    //need a route to grab movie
+
+    //need route that sends all inputted for data to database
+
+    //need route to load page to display event details
+
+    //need route to delete event
+
+    //if time permits make route to update already existing events
+
+
+
+
+    //_______________________adding event logic end_______________________
 
 
     //update
@@ -108,7 +137,7 @@ module.exports = function (app, passport, db) {
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/inventory', // redirect to the secure profile section
+        successRedirect: '/event', // redirect to the secure profile section
         failureRedirect: '/login', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
@@ -121,7 +150,7 @@ module.exports = function (app, passport, db) {
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/inventory', // redirect to the secure profile section
+        successRedirect: '/event', // redirect to the secure profile section
         failureRedirect: '/signup', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
@@ -139,7 +168,7 @@ module.exports = function (app, passport, db) {
         user.local.email = undefined;
         user.local.password = undefined;
         user.save(function (err) {
-            res.redirect('/inventory');
+            res.redirect('/event');
         });
     });
 
