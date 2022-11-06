@@ -3,7 +3,7 @@ body{
   word-wrap:break-word;
 }
 img{
-  height: 200px;
+  height: 100px;
 }
 
 
@@ -60,6 +60,27 @@ nav ul {
   justify-content: space-between;
   font-size: 1.2em;
 }
+
+
+
+
+
+
+
+.drinks-data{
+/* display: inline-block; */
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.food-data{
+/* display: inline-block; */
+  display: flex;
+  justify-content: space-around;
+}
+
+
 
 
 

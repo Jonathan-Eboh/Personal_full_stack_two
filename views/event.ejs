@@ -16,17 +16,9 @@
 
             <ul>
                 <li>
-                    <a href="/women">Womens Collection</a>
+                    <a href="/event_details">See all your events</a>
                 </li>
-                <li>
-                    <a href="/men">Mens Collection</a>
-                </li>
-                <li>
-                    <a href="/jewelery">Jewelery Collection </a>
-                </li>
-                <li>
-                    <a href="/electronics">Electronics Collection</a>
-                </li>
+
             </ul>
         </nav>
     </header>
@@ -48,8 +40,9 @@
     </form>
 
 
+    <h3>Events</h3>
 
-    <ul class="notComplete">
+    <ul class="event-data">
         <% for(var i=0; i<event.length; i++) {%>
 
 
@@ -74,32 +67,65 @@
             <% } %>
     </ul>
 
-
-    <ul class="notComplete">
-        <% for(var i=0; i<drink.length; i++) {%>
-
-
-
-            <li class="message <%= drink[i].title %>">
-                <span>
-                    <%= drink[i].strDrink %>
-                        <img src="<%= drink[i].strDrinkThumb %>" alt="">
-                </span>
-
-                <span>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                </span>
+    <section class="drinkSection">
+        <h3>drinks</h3>
+        <ul class="drinks-data">
+            <% for(var i=0; i<drink.length; i++) {%>
 
 
 
-            </li>
+                <li class="message <%= drink[i].title %>">
+                    <span>
+                        <%= drink[i].strDrink %>
+                            <img src="<%= drink[i].strDrinkThumb %>" alt="">
+                    </span>
 
-            <% } %>
-    </ul>
+                    <span>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </span>
+
+
+
+                </li>
+
+                <% } %>
+        </ul>
+    </section>
+
+    <section class="foodSection">
+        <h3>Food</h3>
+        <ul class="food-data">
+            <% for(var i=0; i<food.length; i++) {%>
+
+
+
+                <li class="message <%= food[i].title %>">
+                    <span>
+                        <%= food[i].strMeal %>
+                            <img src="<%= food[i].strMealThumb %>" alt="">
+                    </span>
+
+                    <span>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </span>
+
+
+
+                </li>
+
+                <% } %>
+        </ul>
+    </section>
+
+
     <script src="main.js"></script>
 
 

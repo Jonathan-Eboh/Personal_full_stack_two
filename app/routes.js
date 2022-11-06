@@ -34,20 +34,33 @@ module.exports = function (app, passport, db) {
 
     //useing async await
     app.get('/event', async (req, res) => {
+        console.log("THIS IS THE EVENT ROUTE IN THE SEVER");
+
+        //lorem
         const groceryResult = await fetch("https://jsonplaceholder.typicode.com/todos/") //later on put grocery api here
         let groceryJson = await groceryResult.json()
-
+        //drinks
         const drinkResult = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a") //later on put grocery api here
         let drinkJson = await drinkResult.json()
+        //food
+        const foodResult = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a") //later on put grocery api here
+        let foodJson = await foodResult.json()
+        //movie
+        const movieResult = await fetch("https://fake-movie-database-api.herokuapp.com/api?s=batman") //later on put grocery api here
+        let movieJson = await movieResult.json()
 
         //slice returns new array , splice mutates it
-        console.log(groceryJson.length);
-
+        //console.log(groceryJson.length);
+        console.log("this is foodJson.meals length ", foodJson.meals.length);
+        // console.log("this is drinkJson length ", drinkJson.size);
+        // console.log("this is groceryJson length ", groceryJson.size);
+        console.log("this is movieJson.Search length ", movieJson.Search.length);
+        foodJson = foodJson.meals.slice(0, 3)
         groceryJson = groceryJson.slice(0, 10)
         drinkJson = drinkJson.drinks.slice(0, 3)
-        console.log(groceryJson.length);
+        //console.log(groceryJson.length);
         //const result = await db.collection('cart').find().toArray() //can use this logic structure later to loop through grocery items and try to find them in the cart, then do stuff based on that
-        res.render('event.ejs', { event: groceryJson, drink: drinkJson })
+        res.render('event.ejs', { event: groceryJson, drink: drinkJson, food: foodJson, movie: movieJson })
     })
 
     //_______________________adding event logic start_______________________
@@ -59,7 +72,11 @@ module.exports = function (app, passport, db) {
     //need route that sends all inputted for data to database
 
     //need route to load page to display event details
+    app.get('/event_details', async (req, res) => {
 
+        const eventResult = await db.collection('events').find().toArray()
+        res.render('event_details.ejs', { event: eventResult })
+    })
     //need route to delete event
 
     //if time permits make route to update already existing events
@@ -87,13 +104,31 @@ module.exports = function (app, passport, db) {
     })
 
     //create
-    app.post('/todotask', (req, res) => {
-        db.collection('todolist').insertOne({ task: req.body.task, priority: req.body.priority, completed: false }, (err, result) => {
+
+    app.post('/addEvent', (req, res) => {
+        db.collection('events').insertOne({
+
+            task: req.body.task,
+            priority: req.body.priority,
+            completed: false
+
+        }, (err, result) => {
             if (err) return console.log(err)
-            console.log('saved to database')
-            res.redirect('/')
+            console.log('event added to database!')
+            //res.render('event_details.ejs', { cart: result })
         })
     })
+
+
+
+    //___________________________________________________________________________
+    // app.post('/todotask', (req, res) => {
+    //     db.collection('todolist').insertOne({ task: req.body.task, priority: req.body.priority, completed: false }, (err, result) => {
+    //         if (err) return console.log(err)
+    //         console.log('saved to database')
+    //         res.redirect('/')
+    //     })
+    // })
 
 
     //change value of check
