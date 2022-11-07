@@ -62,6 +62,12 @@ nav ul {
 }
 
 
+.movie-data {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* font-size: 1.2em; */
+}
 
 
 

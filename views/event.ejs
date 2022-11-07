@@ -31,10 +31,22 @@
         <input type="text" placeholder="Person 3" name="personThree">
 
         <select name="bat-man-movie" id="bat-man-movieSelect">
-            <option value="">--Select A Movie--</option>
+            <option value="">--Select A Batman Movie--</option>
             <% for(var i=0; i<movie.length; i++) {%>
 
-                <option value="high">High</option>
+                <option value="<%= movie[i].title %>">
+                    <%= movie[i].Title %>
+                </option>
+                <% } %>
+        </select>
+
+        <select name="star-wars-movie" id="star-wars-movieSelect">
+            <option value="">--Select A Star Wars Movie--</option>
+            <% for(var i=0; i<movieTwo.length; i++) {%>
+
+                <option value="<%= movieTwo[i].title %>">
+                    <%= movieTwo[i].Title %>
+                </option>
                 <% } %>
         </select>
         <button type="submit">Submit</button>
@@ -51,6 +63,38 @@
             <li class="message <%= event[i].title %>">
                 <span>
                     <%= event[i].title %>
+
+                </span>
+
+                <span>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </span>
+
+                <span>
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                </span>
+
+
+
+            </li>
+
+            <% } %>
+    </ul>
+
+    <h3>Movies</h3>
+    <ul class="movie-data">
+        <% for(var i=0; i<movie.length; i++) {%>
+
+
+
+            <li class="message <%= movie[i].Title %>">
+                <span>
+                    <%= movie[i].Title %>
+
+                </span>
+                <span>
+
+                    <img src="<%= movie[i].Poster %>" alt="<%= movie[i].Title %>">
                 </span>
 
                 <span>

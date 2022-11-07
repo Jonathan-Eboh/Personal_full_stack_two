@@ -58,9 +58,12 @@ module.exports = function (app, passport, db) {
         // console.log("this is drinkJson length ", drinkJson.size);
         // console.log("this is groceryJson length ", groceryJson.size);
         console.log("this is movieJson.Search length ", movieJson.Search.length);
+        console.log("this is movieJson.Search  ", movieJson.Search);
         foodJson = foodJson.meals.slice(0, 3)
         groceryJson = groceryJson.slice(0, 10)
         drinkJson = drinkJson.drinks.slice(0, 3)
+        movieJson = movieJson.Search
+        movieTwoJson = movieTwoJson.Search
         //console.log(groceryJson.length);
         //const result = await db.collection('cart').find().toArray() //can use this logic structure later to loop through grocery items and try to find them in the cart, then do stuff based on that
         res.render('event.ejs', { event: groceryJson, drink: drinkJson, food: foodJson, movie: movieJson, movieTwo: movieTwoJson })
