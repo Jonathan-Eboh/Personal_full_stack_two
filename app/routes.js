@@ -45,9 +45,12 @@ module.exports = function (app, passport, db) {
         //food
         const foodResult = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a") //later on put grocery api here
         let foodJson = await foodResult.json()
-        //movie
+        // bat man movie
         const movieResult = await fetch("https://fake-movie-database-api.herokuapp.com/api?s=batman") //later on put grocery api here
         let movieJson = await movieResult.json()
+        //star wars movie
+        const movieTwoResult = await fetch("https://fake-movie-database-api.herokuapp.com/api?s=star%20wars") //later on put grocery api here
+        let movieTwoJson = await movieTwoResult.json()
 
         //slice returns new array , splice mutates it
         //console.log(groceryJson.length);
@@ -60,7 +63,7 @@ module.exports = function (app, passport, db) {
         drinkJson = drinkJson.drinks.slice(0, 3)
         //console.log(groceryJson.length);
         //const result = await db.collection('cart').find().toArray() //can use this logic structure later to loop through grocery items and try to find them in the cart, then do stuff based on that
-        res.render('event.ejs', { event: groceryJson, drink: drinkJson, food: foodJson, movie: movieJson })
+        res.render('event.ejs', { event: groceryJson, drink: drinkJson, food: foodJson, movie: movieJson, movieTwo: movieTwoJson })
     })
 
     //_______________________adding event logic start_______________________

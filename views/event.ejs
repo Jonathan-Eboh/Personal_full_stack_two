@@ -29,12 +29,13 @@
         <input type="text" placeholder="Person 1" name="personOne">
         <input type="text" placeholder="Person 2" name="personTwo">
         <input type="text" placeholder="Person 3" name="personThree">
-        <input type="text" placeholder="task" name="task">
-        <select name="priority" id="prioritySelect">
-            <option value="">--Priority--</option>
-            <option value="high">High</option>
-            <option value="low">Low</option>
-            <option value="mid">Mid</option>
+
+        <select name="bat-man-movie" id="bat-man-movieSelect">
+            <option value="">--Select A Movie--</option>
+            <% for(var i=0; i<movie.length; i++) {%>
+
+                <option value="high">High</option>
+                <% } %>
         </select>
         <button type="submit">Submit</button>
     </form>
