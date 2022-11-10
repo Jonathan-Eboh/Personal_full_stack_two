@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event page</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+
+<body>
+    <header>
+        <nav>
+
+            <ul>
+                <li>
+                    <a href="/event_details">Back to your events</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Here is your event!</h1>
+
+    <h3>Event</h3>
+
+    <ul class="event-data">
+        <form action="/updateEvent" method="PUT">
+            <% for(var i=0; i<singleEvent.length; i++) {%>
+
+
+
+                <li class="message">
+                    <span>
+
+                        <%= singleEvent[i].eventTitle %>
+                            <span>
+                                <input type="text" placeholder="change event name" name="newEventName">
+                            </span>
+                    </span>
+                    <span>On this date:
+                        <%= singleEvent[i].date %>
+                    </span>
+                    <span>
+                        <%= singleEvent[i].personOne %>
+                    </span>
+                    <span>
+                        <%= singleEvent[i].personTwo %>
+                    </span>
+                    <span>
+                        <%= singleEvent[i].personThree %>
+                    </span>
+                    <span>
+                        Are going to watch:
+                        <%= singleEvent[i].batmovie %>
+                    </span>
+                    <span>
+                        or :
+                        <%= singleEvent[i].starmovie %>
+                    </span>
+
+                    <span>
+                        Delete Event:
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </span>
+
+                    <span>
+                        Update Event:
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+
+                        </section>
+                    </span>
+
+                    <button type="submit">Update Event!</button>
+
+                </li>
+
+                <% } %>
+
+        </form>
+    </ul>
+
+
+
+
+
+    <h2>Below you can update your event if youd like!</h2>
+
+    <section class="formContainer">
+        <form action="/updateEvent" method="PUT">
+            <input type="date" name="changeDate" id="dateSelect">
+
+            <button type="submit">Update Event!</button>
+        </form>
+    </section>
+
+    <section class="drinkSection">
+
+    </section>
+
+    <section class="foodSection">
+
+    </section>
+
+
+    <script src="/main.js"></script>
+
+
+
+</body>
+
+</html>

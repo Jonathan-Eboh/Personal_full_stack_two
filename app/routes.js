@@ -1,5 +1,5 @@
 const fetch = require("node-fetch")
-
+const ObjectID = require('mongodb').ObjectID
 module.exports = function (app, passport, db) {
 
     // normal routes ===============================================================
@@ -88,7 +88,24 @@ module.exports = function (app, passport, db) {
     //if time permits make route to update already existing events
 
 
+    //_____________________________________________
+    //Working with object id
 
+
+    // app.get('/viewCluster/:clusterId', async (req, res) => {
+    //     console.log(req.params.clusterId);
+    //     console.log("This is req.params._id: ", req.params._id);
+
+    //     const infoClusterItemsResult = await db.collection('info_cluster_item').find({
+    //         cluster_id: ObjectID(req.params.clusterId)
+    //     }).toArray()
+    //     console.log(infoClusterItemsResult);
+
+    //     res.render('viewCluster.ejs', { infoClusterItems: infoClusterItemsResult })
+    // })
+
+
+    //_____________________________________________
 
     //_______________________adding event logic end_______________________
 
@@ -112,11 +129,19 @@ module.exports = function (app, passport, db) {
     //create
 
     app.post('/addEvent', (req, res) => {
+
+        console.log(req.body);
+
         db.collection('events').insertOne({
 
-            task: req.body.task,
-            priority: req.body.priority,
-            completed: false
+            //send all the details of the event to the database
+            date: req.body.date,
+            personOne: req.body.personOne.trim(),
+            personTwo: req.body.personTwo.trim(),
+            personThree: req.body.personThree.trim(),
+            batmovie: req.body.batmovie,
+            starmovie: req.body.starmovie,
+            eventTitle: req.body.eventTitle.trim()
 
         }, (err, result) => {
             if (err) return console.log(err)
@@ -125,7 +150,39 @@ module.exports = function (app, passport, db) {
         })
     })
 
+    //view event
 
+    app.get('/viewEvent/:_id', async (req, res) => {
+        //console.log(req.params.clusterId);
+        console.log("This is req.params._id: ", req.params._id);
+
+        const eventResult = await db.collection('events').find({
+            _id: ObjectID(req.params._id)
+        }).toArray()
+        console.log("This is event result ", eventResult);
+
+        res.render('view_event.ejs', { singleEvent: eventResult })
+    })
+
+    //update event
+    app.put('/updateEvent', (req, res) => {
+        db.collection('events')
+            .findOneAndUpdate({
+                eventTitle: req.body.eventTitle.trim() //dont know if this ill work
+            }, {
+                    $set: {
+                        // update the name of the event
+                        eventTitle: req.body.newEventName.trim()
+                    }
+                }, {
+                    sort: { _id: -1 },
+                    upsert: true
+                }, (err, result) => {
+                    if (err) return res.send(err)
+                    res.send(result)
+                })
+        res.redirect('back')
+    })
 
     //___________________________________________________________________________
     // app.post('/todotask', (req, res) => {

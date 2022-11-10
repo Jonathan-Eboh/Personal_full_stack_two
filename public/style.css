@@ -69,10 +69,6 @@ nav ul {
   /* font-size: 1.2em; */
 }
 
-
-
-
-
 .drinks-data{
 /* display: inline-block; */
   display: flex;
@@ -87,20 +83,18 @@ nav ul {
 }
 
 
-
-
-
-.womensSection{
+form{
   display: flex;
-  outline: 3px solid black;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.womensSection li{
-  /* display: flex; */
-  outline: 3px solid rebeccapurple;
+.formContainer{
+  width: 25%;
 }
 
-.womensSection span{
-  /* display: flex; */
-  outline: 3px solid green;
+.event-data span{
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
