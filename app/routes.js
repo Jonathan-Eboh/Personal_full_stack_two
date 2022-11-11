@@ -141,7 +141,9 @@ module.exports = function (app, passport, db) {
             personThree: req.body.personThree.trim(),
             batmovie: req.body.batmovie,
             starmovie: req.body.starmovie,
-            eventTitle: req.body.eventTitle.trim()
+            eventTitle: req.body.eventTitle.trim(),
+            drink: req.body.eventDrink,
+            meal: req.body.eventMeal,
 
         }, (err, result) => {
             if (err) return console.log(err)
@@ -166,22 +168,34 @@ module.exports = function (app, passport, db) {
 
     //update event
     app.put('/updateEvent', (req, res) => {
+        console.log("THIS IS UPDATE ON THE SERVER SIDE", req.body);
+
         db.collection('events')
             .findOneAndUpdate({
-                eventTitle: req.body.eventTitle.trim() //dont know if this ill work
+                _id: ObjectID(req.body._id)
             }, {
                     $set: {
                         // update the name of the event
-                        eventTitle: req.body.newEventName.trim()
+                        favorited: req.body.favorited
                     }
                 }, {
                     sort: { _id: -1 },
-                    upsert: true
+
                 }, (err, result) => {
                     if (err) return res.send(err)
                     res.send(result)
                 })
-        res.redirect('back')
+
+    })
+
+    //delete event
+    app.delete('/removeEvent', (req, res) => {
+        console.log(req.body);
+
+        db.collection('events').findOneAndDelete({ _id: ObjectID(req.body._id) }, (err, result) => {
+            if (err) return res.send(500, err)
+            res.send('Event deleted!')
+        })
     })
 
     //___________________________________________________________________________
