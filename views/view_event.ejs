@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/normalize.css">
 </head>
 
 
@@ -16,7 +17,7 @@
 
             <ul>
                 <li>
-                    <a href="/event_details">Back to your events</a>
+                    <a class="link" href="/event_details">Back to your events</a>
                 </li>
 
             </ul>
@@ -37,9 +38,7 @@
                     <span>
 
                         <%= singleEvent[i].eventTitle %>
-                            <span>
-                                <input type="text" placeholder="change event name" name="newEventName">
-                            </span>
+
                     </span>
                     <span>On this date:
                         <%= singleEvent[i].date %>
@@ -61,21 +60,14 @@
                         or :
                         <%= singleEvent[i].starmovie %>
                     </span>
-
                     <span>
-                        Delete Event:
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        On the menu we have for food:
+                        <%= singleEvent[i].meal %>
                     </span>
-
                     <span>
-                        Update Event:
-                        <i class="fa fa-check-square" aria-hidden="true"></i>
-
-                        </section>
+                        and for drinks :
+                        <%= singleEvent[i].drink %>
                     </span>
-
-                    <button type="submit">Update Event!</button>
-
                 </li>
 
                 <% } %>
@@ -87,23 +79,9 @@
 
 
 
-    <h2>Below you can update your event if youd like!</h2>
+    <h2>Hope you and your friends have fun!</h2>
 
-    <section class="formContainer">
-        <form action="/updateEvent" method="PUT">
-            <input type="date" name="changeDate" id="dateSelect">
 
-            <button type="submit">Update Event!</button>
-        </form>
-    </section>
-
-    <section class="drinkSection">
-
-    </section>
-
-    <section class="foodSection">
-
-    </section>
 
 
     <script src="/main.js"></script>

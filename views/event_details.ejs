@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/normalize.css">
 </head>
 
 
@@ -16,7 +17,7 @@
 
             <ul>
                 <li>
-                    <a href="/event">Back to create event</a>
+                    <a class="link" href="/event">Back to create event</a>
                 </li>
 
             </ul>
@@ -63,7 +64,7 @@
                 </span>
 
                 <span>
-                    One the menu we have for food:
+                    On the menu we have for food:
                     <%= event[i].meal %>
                 </span>
                 <span>
@@ -88,74 +89,6 @@
 
             <% } %>
     </ul>
-
-    <h3>Edit your events below</h3>
-
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Person One</th>
-            <th>Person Two</th>
-            <th>Person Three</th>
-            <th>Movie Choice One</th>
-            <th>Movie Choice Two</th>
-            <th>Food</th>
-            <th>Drink</th>
-            <th>Delete</th>
-        </tr>
-
-        <% for(var i=0; i<event.length; i++) {%>
-
-
-
-            <tr id="<%= event[i]._id%>">
-                <td>
-                    <input value="<%= event[i].eventTitle %>">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </td>
-                <td>
-                    <input value="<%= event[i].date %>">
-                </td>
-                <td>
-                    <input value="<%= event[i].personOne %>">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </td>
-                <td>
-                    <input value="<%= event[i].personTwo %>">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </td>
-                <td>
-                    <input value="<%= event[i].personThree %>">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </td>
-                <td>
-                    <input value="<%= event[i].batmovie %>">
-                </td>
-                <td>
-                    <input value="<%= event[i].starmovie %>">
-                </td>
-                <td>
-                    <input value="<%= event[i].meal %>">
-                </td>
-                <td>
-                    <input value="<%= event[i].drink %>">
-                </td>
-                <td>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </td>
-            </tr>
-            <% } %>
-    </table>
-
-    <section class="drinkSection">
-
-    </section>
-
-    <section class="foodSection">
-
-    </section>
-
 
     <script src="/main.js"></script>
 

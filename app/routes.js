@@ -37,8 +37,8 @@ module.exports = function (app, passport, db) {
         console.log("THIS IS THE EVENT ROUTE IN THE SEVER");
 
         //lorem
-        const groceryResult = await fetch("https://jsonplaceholder.typicode.com/todos/") //later on put grocery api here
-        let groceryJson = await groceryResult.json()
+        // const groceryResult = await fetch("https://jsonplaceholder.typicode.com/todos/") //later on put grocery api here
+        // let groceryJson = await groceryResult.json()
         //drinks
         const drinkResult = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a") //later on put grocery api here
         let drinkJson = await drinkResult.json()
@@ -59,14 +59,15 @@ module.exports = function (app, passport, db) {
         // console.log("this is groceryJson length ", groceryJson.size);
         console.log("this is movieJson.Search length ", movieJson.Search.length);
         console.log("this is movieJson.Search  ", movieJson.Search);
+        console.log("this is movieTwoJson.Search  ", movieTwoJson.Search);
         foodJson = foodJson.meals.slice(0, 3)
-        groceryJson = groceryJson.slice(0, 10)
+        // groceryJson = groceryJson.slice(0, 10)
         drinkJson = drinkJson.drinks.slice(0, 3)
         movieJson = movieJson.Search
         movieTwoJson = movieTwoJson.Search
         //console.log(groceryJson.length);
         //const result = await db.collection('cart').find().toArray() //can use this logic structure later to loop through grocery items and try to find them in the cart, then do stuff based on that
-        res.render('event.ejs', { event: groceryJson, drink: drinkJson, food: foodJson, movie: movieJson, movieTwo: movieTwoJson })
+        res.render('event.ejs', { drink: drinkJson, food: foodJson, movie: movieJson, movieTwo: movieTwoJson })
     })
 
     //_______________________adding event logic start_______________________

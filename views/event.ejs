@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/normalize.css">
 </head>
 
 
@@ -16,11 +17,12 @@
 
             <ul>
                 <li>
-                    <a href="/event_details">See all your events</a>
+                    <a class="link" href="/event_details">See all your events</a>
                 </li>
 
             </ul>
         </nav>
+        <h1>Nerdy Movie Night Planner!</h1>
     </header>
 
 
@@ -87,124 +89,68 @@
         </form>
     </section>
 
-    <h3>Movies Currently Available to watch!</h3>
-    <ul class="movie-data">
+    <h3>Movies Currently Available to Watch!</h3>
+
+
+
+    <section class="content-container">
         <% for(var i=0; i<movie.length; i++) {%>
+            <% if(!(movie[i].Title === 'Batman Begins' || movie[i].Title === 'Batman Forever')) {%>
+                <section class="content-box white">
+                    <div>
+                        <img src="<%= movie[i].Poster %>" alt="<%= movie[i].Title %>">
+                    </div>
+                    <div>
+                        <%= movie[i].Title %>
+                    </div>
+                </section>
+                <% } %>
+                    <% } %>
+    </section>
 
-
-
-            <li class="message <%= movie[i].Title %>">
-                <span>
-                    <%= movie[i].Title %>
-
-                </span>
-                <span>
-
-                    <img src="<%= movie[i].Poster %>" alt="<%= movie[i].Title %>">
-                </span>
-
-                <span>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                </span>
-
-
-
-            </li>
-
-            <% } %>
-    </ul>
-    <ul class="movie-data">
+    <section class="content-container">
         <% for(var i=0; i<movieTwo.length; i++) {%>
-
-
-
-            <li class="message <%= movieTwo[i].Title %>">
-                <span>
-                    <%= movieTwo[i].Title %>
-
-                </span>
-                <span>
-
-                    <img src="<%= movieTwo[i].Poster %>" alt="<%= movieTwo[i].Title %>">
-                </span>
-
-                <span>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
-                </span>
-
-                <span>
-                    <i class="fa fa-check-square" aria-hidden="true"></i>
-                </span>
-
-
-
-            </li>
+            <% if(!(movieTwo[i].Title === 'Star Wars' || movieTwo[i].Title === 'Star Wars: Episode II - Attack of the Clones' || movieTwo[i].Title === 'Star Wars: Lost Horizons')) {%>
+                <section class="content-box white">
+                    <div>
+                        <img src="<%= movieTwo[i].Poster %>" alt="<%= movieTwo[i].Title %>">
+                    </div>
+                    <div>
+                        <%= movieTwo[i].Title %>
+                    </div>
+                </section>
+                <% } %>
+                    <% } %>
+    </section>
+    <h3>Drinks</h3>
+    <section class="content-container">
+        <% for(var i=0; i<drink.length; i++) {%>
+            <section class="content-box white">
+                <div>
+                    <img src="<%= drink[i].strDrinkThumb %>" alt="<%= drink[i].strDrink %>">
+                </div>
+                <div>
+                    <%= drink[i].strDrink %>
+                </div>
+            </section>
 
             <% } %>
-    </ul>
-    <section class="drinkSection">
-        <h3>drinks</h3>
-        <ul class="drinks-data">
-            <% for(var i=0; i<drink.length; i++) {%>
-
-
-
-                <li class="message <%= drink[i].title %>">
-                    <span>
-                        <%= drink[i].strDrink %>
-                            <img src="<%= drink[i].strDrinkThumb %>" alt="">
-                    </span>
-
-                    <span>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </span>
-
-                    <span>
-                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                    </span>
-
-
-
-                </li>
-
-                <% } %>
-        </ul>
     </section>
 
-    <section class="foodSection">
-        <h3>Food</h3>
-        <ul class="food-data">
-            <% for(var i=0; i<food.length; i++) {%>
+    <h3>Food</h3>
+    <section class="content-container">
+        <% for(var i=0; i<food.length; i++) {%>
+            <section class="content-box white">
+                <div>
+                    <img src="<%= food[i].strMealThumb %>" alt="<%= food[i].strMeal %>">
+                </div>
+                <div>
+                    <%= food[i].strMeal %>
+                </div>
+            </section>
 
-
-
-                <li class="message <%= food[i].title %>">
-                    <span>
-                        <%= food[i].strMeal %>
-                            <img src="<%= food[i].strMealThumb %>" alt="">
-                    </span>
-
-                    <span>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                    </span>
-
-                    <span>
-                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                    </span>
-
-
-
-                </li>
-
-                <% } %>
-        </ul>
+            <% } %>
     </section>
-
-
     <script src="/main.js"></script>
 
 
