@@ -12,7 +12,7 @@ A full stack web application that allows the user to plan movie nights with thei
 
 Optimizations:
 
-This was a pleasant and rare instance where the pipe line from idea to fully built out piece of software was able to flow with relatively few hitches.
+This was a pleasant and rare instance where the pipe line from idea to fully built out piece of software was able to flow with relatively few hitches. That said, half way through development the API I was leveraging started to return bad data for some of its entries. This lead to me utilizing a conditional clause within my EJS to preclude bad data from being rendered to the front end.
 
 C.R.U.D 
 
