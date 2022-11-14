@@ -3,7 +3,9 @@
 
 
 Tech used: 
+
 Front end: HTML, CSS, JavaScript, Moive API, Cocktail API, Meal API 
+
 Back end: Node js, mongo db
 
 A full stack web application that allows the user to plan movie nights with their friends with a nerdy theme!
